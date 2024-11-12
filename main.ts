@@ -1,33 +1,41 @@
+
 /* Copyright (c) 2020 MTHS All rights reserved
  *
- * Created by: Mr. Coxall
- * Created on: Sep 2020
- * This program ...
+ * Created by: Rebecca de Boer
+ * Created on: Oct 2024
+ * This program says which number is bigger
 */
 
-let randomNumber: number = 0
-let randomNumber1: number = 0
-let randomNumber2: number = 0
+//setup
+basic.showIcon(IconNames.Happy)
 
-// setup
-basic.clearScreen()
+//variables
+let firstNumber = randint(0, 99)
+let secondNumber = randint(0, 99)
 
-// generating random numbers
+//Button A
 input.onButtonPressed(Button.A, function () {
-    randomNumber1 = randint(0, 99)
-    basic.showNumber(randomNumber)
+    basic.clearScreen()
+    basic.showString("#1:")
+    basic.showNumber(firstNumber)
+    basic.showIcon(IconNames.Happy)
 })
 
+//Button B
 input.onButtonPressed(Button.B, function () {
-    randomNumber2 = randint(0, 99)
-    basic.showNumber(randomNumber)
+    basic.clearScreen()
+    basic.showString("#2:")
+    basic.showNumber(secondNumber)
+    basic.showIcon(IconNames.Happy)
 })
 
-// comparing
+//Shake
 input.onGesture(Gesture.Shake, function () {
-    if (randomNumber1 > randomNumber2) {
-        basic.showString(randomNumber1.toString() + " > " + randomNumber2.toString())
-    } else {
-        basic.showString(randomNumber1.toString() + " < " + randomNumber2.toString())
-    }
+    basic.clearScreen()
+    if (firstNumber < secondNumber)
+        basic.showString(firstNumber + "<" + secondNumber)
+    else if (firstNumber > secondNumber)
+        basic.showString(firstNumber + ">" + secondNumber)
+    basic.showIcon(IconNames.Sad)
 })
+
